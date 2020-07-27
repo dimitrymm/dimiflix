@@ -5,8 +5,8 @@ import Menu from './components/Menu'
 function App() {
   return (
     <div className="App">
-     <Menu/>
-      <h1>Dimitry</h1>
+      <Menu />
+      <h1>Em Construção...</h1>
 
     </div>
   );
