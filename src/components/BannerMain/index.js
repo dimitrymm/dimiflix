@@ -32,7 +32,7 @@ export default function BannerMain({
 
                 <ContentAreaContainer.Item>
                     <YouTubeIframeResponsive
-                        youTubeID={youTubeID}
+                        youtubeID={youTubeID}
                     />
                     <WatchButton>
                         Assistir

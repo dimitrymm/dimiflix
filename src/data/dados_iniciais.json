@@ -10,12 +10,12 @@
             },
             "videos": [
                 {
-                    "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-                    "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+                    "titulo": "Como fazer SEO com React, NextJS e Deploy estático Pokedex #DevSoutinho",
+                    "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
                 },
                 {
                     "titulo": "SEO com React",
-                    "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+                    "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
                 },
                 {
                     "titulo": "Componentização com VanillaJS #AluraMais",
