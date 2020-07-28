@@ -22,3 +22,7 @@ html,body{
 a{
   color:inherit;
 }
+
+.Titulo{
+  text-align: center;  
+}
