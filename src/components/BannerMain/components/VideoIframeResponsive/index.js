@@ -15,3 +15,5 @@ const YouTubeIframeResponsive = ({ youtubeID }) =>{
         </VideoContainer>
     );
 }
+
+export default YouTubeIframeResponsive;

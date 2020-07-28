@@ -102,7 +102,7 @@ export const BannerMainContainer = styled.section`
     }
 `;
 
-export const WatchButon = styled.button`
+export const WatchButton = styled.button`
     font-family:'Roboto',sans-serif;
     box-sizing:border-box;
     cursor: pointer;
