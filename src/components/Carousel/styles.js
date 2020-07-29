@@ -10,7 +10,7 @@ export const Title = styled.h3`
   padding: 20px;
   background: red;
   line-height: 1;
-  border-radius: 4px;
+  border-radius: 5px;
 
   @media (max-width: 800px) {
     font-size: 18px;
@@ -37,7 +37,7 @@ transition:opacity .3s;
 
 
 export const VideoCardList = styled.ul`
-    margin: 0;
+  margin: 0;
   padding-left: 0;
   padding-bottom: 32px;
   list-style: none;
@@ -45,14 +45,17 @@ export const VideoCardList = styled.ul`
   overflow-x: auto;
   flex-direction: row;
   
+  
   li {
     margin-right: 16px;
+    
   }
 `;
 
 export const VideoCardGroupContainer = styled.section`
-    color: white;
+  color: white;
   min-height: 197px;
   margin-left: 5%;
   margin-bottom: 16px;
+ 
 `;

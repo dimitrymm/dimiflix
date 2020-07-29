@@ -13,19 +13,21 @@ export const VideoCardContainer = styled.a`
     background-image:${({ url }) => `url(${url})`};
     background-size:cover;
     background-position: center;
-  border-radius: 10px;
+  border-radius: 15px;
   position: relative;
   display: flex;
   align-items: flex-end;
   padding: 16px;
   transition: opacity .3s;
-  &:hover{
-    background-size:inherit;  
-    transition:width 1s, height 1s;
-    padding:20px;
-    width:398px;
-    height:297px;  
+  z-index:200;
+
+
+  transition: all .2s ease-in-out; 
+  &:hover{    
+    box-shadow: 10px 10px 5px black;  
+    transform: scale(1.1);       
   }
+  
   &:focus {
     opacity: .5;
   }
@@ -35,3 +37,4 @@ export const VideoCardContainer = styled.a`
   }
 
 `;
+
