@@ -20,9 +20,11 @@ export const VideoCardContainer = styled.a`
   padding: 16px;
   transition: opacity .3s;
   &:hover{
-    background-size:inherit;
+    background-size:inherit;  
+    transition:width 1s, height 1s;
+    padding:20px;
     width:398px;
-    height:297px;
+    height:297px;  
   }
   &:focus {
     opacity: .5;
