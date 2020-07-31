@@ -16,10 +16,10 @@ function App() {
       <BannerMain
         videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
         url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription={"Nesse vídeo dizer que a gente vai aprender a começar uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas dicas sobre performance e de quebra conhecer uma plataforma sensacional pra fazer deploy que é a Vercel!"}
+        videoDescription={""}
       />
 
-<Carousel
+      <Carousel
         ignoreFirstVideo
         category={dadosIniciais.categorias[0]}
       />
