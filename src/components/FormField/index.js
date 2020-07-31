@@ -1,19 +1,42 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const FormField = ({label,type, name,value, onChange }) => {
-    return (
-        <div>
-            <label>
-                {label}
-                    <input
-                    type={type}
-                    value={value}
-                    name={name}
-                    onChange={onChange}
-                />
-            </label>
-        </div>
-    );
-}
+const FormField = ({
+  label, type, name, value, onChange,
+}) => {
+  const fieldId = `id_${name}`;
+  return (
+    <div>
 
+      <label
+        htmlFor={fieldId}
+      >
+        {label}
+        <input
+          type={type}
+          value={value}
+          name={name}
+          onChange={onChange}
+        />
+      </label>
+    </div>
+  );
+};
+
+FormField.defaultProps = {
+    type: 'text',
+    value: '',
+    onChange: () => {},
+};
+
+FormField.propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+
+};
 export default FormField;
