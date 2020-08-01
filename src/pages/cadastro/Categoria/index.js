@@ -3,7 +3,7 @@
 
 /* eslint-disable linebreak-style */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import Button from '../../../components/Button';
@@ -32,6 +32,30 @@ const CadastroCategoria = () => {
     );
   }
 
+  useEffect(() => {
+    console.log('Teste USe Effect');
+
+    setTimeout(() => {
+      setCategorias([
+        ...categorias,
+        {
+          id: 1,
+          nome: 'Front End',
+          descricao: 'Uma Categoria',
+          cor: 'cbd1ff',
+        },
+        {
+          id: 2,
+          nome: 'Back End',
+          descricao: 'Uma Categoria',
+          cor: 'cbd3ff',
+        },
+      ]);
+    }, 4 * 1000);
+  }, [
+    values.nome,
+  ]);
+
   return (
     <PageDefault>
       <h1>
@@ -48,42 +72,41 @@ const CadastroCategoria = () => {
         setValues(valoresIniciais);
       }}
       >
-        <div>
-
-          <FormField
-            label="Nome da Categoria: "
-            type="text"
-            name="nome"
-            value={values.nome}
-            onChange={funcHandler}
-          />
-
-          <div>
-
-            <FormField
-              label="Descrição:"
-              type="textArea"
-              value={values.descricao}
-              onChange={funcHandler}
-            />
-
-          </div>
-          <FormField
-            label="Cor: "
-            type="color"
-            value={values.cor}
-            onChange={funcHandler}
-          />
-        </div>
-
+        <FormField
+          label="Nome da Categoria: "
+          type="text"
+          name="nome"
+          value={values.nome}
+          onChange={funcHandler}
+        />
+        <FormField
+          label="Descrição"
+          type="textArea"
+          name="descricao"
+          value={values.descricao}
+          onChange={funcHandler}
+        />
+        <FormField
+          label="Cor: "
+          type="color"
+          name="cor"
+          value={values.cor}
+          onChange={funcHandler}
+        />
         <Button>
           Cadastrar
         </Button>
 
       </form>
+      {categorias.length === 0 && (
+        <div>
+          Loading...
+        </div>
+      )}
+
       <ul>
         {categorias.map((categoria, indice) => (
-          <li key={`${categoria}${indice}`}>
+          <li key={`${categoria.nome}${indice}`}>
             {categoria.nome}
           </li>
         ))}

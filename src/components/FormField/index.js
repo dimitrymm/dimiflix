@@ -2,23 +2,23 @@
 /* eslint-disable indent */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const FormFieldWrapper = styled.div`
 position: relative;
 textarea{
   min-height:150px;
 }
-input[type='color']{
+input[type="color"]{
   padding-left:56px;
 }
-
 `;
 const Label = styled.label``;
+
 Label.Text = styled.span`
 color:#e5e5e5;
 height:57px;
-position: relative;
+position: absolute;
 top:0;
 left:16px;
 
@@ -57,7 +57,17 @@ transition:border-color .3s;
   border-bottom-color:var(--primary);
 }
 
+&:focus:not([type='color']) + span{
+  transform:scale(.6) translateY(-10px);
+}
 
+${({ hasValue }) => {
+    hasValue && css`
+    &:not([type='color']) + span{
+    transform:scale(.6) translateY(-10px);
+      }
+    `;
+  }}
 `;
 const FormField = ({
   label, type, name, value, onChange,
@@ -65,25 +75,27 @@ const FormField = ({
   const fieldId = `id_${name}`;
   const isTextarea = type === 'textarea';
   const tag = isTextarea ? 'textarea' : 'input';
+
+  const hasValue = Boolean(value.lenght);
+
+
+
   return (
     <FormFieldWrapper>
-
-      <Label
-        htmlFor={fieldId}
-      >
-        <Label.Text>
-          {label}
-        :
-        </Label.Text>
-
+      <Label htmlFor={fieldId}>
         <Input
           as={tag}
           id={fieldId}
           type={type}
           value={value}
           name={name}
+          hasValue={hasValue}
           onChange={onChange}
         />
+        <Label.Text>
+          {label}
+          :
+        </Label.Text>
       </Label>
     </FormFieldWrapper>
   );
@@ -91,8 +103,8 @@ const FormField = ({
 
 FormField.defaultProps = {
   type: 'text',
-  value: '',
-  onChange: () => { },
+  value: ' ',
+  //onChange: () => { },
 };
 
 FormField.propTypes = {
@@ -100,7 +112,7 @@ FormField.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 
 };
 export default FormField;
