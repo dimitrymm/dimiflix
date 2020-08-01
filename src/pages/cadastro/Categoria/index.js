@@ -58,7 +58,7 @@ const CadastroCategoria = () => {
 
   return (
     <PageDefault>
-      <h1>
+      <h1 style={{textAlign:"center"}}>
         Cadastro de Categoria :
         {values.nome}
       </h1>
@@ -111,7 +111,8 @@ const CadastroCategoria = () => {
           </li>
         ))}
       </ul>
-      <Button as={Link} className="ButtonLink" to="/">
+
+     <Button as={Link} className="ButtonLink" to="/">
         Home
       </Button>
 

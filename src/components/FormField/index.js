@@ -34,7 +34,7 @@ transition:.1s ease-in-out;
 `;
 
 const Input = styled.input`
-background:#535850;
+background:var(--primary);
 color:#f5f5f5;
 display:block;
 width:100%;
