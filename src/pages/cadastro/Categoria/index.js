@@ -35,7 +35,16 @@ const CadastroCategoria = () => {
   useEffect(() => {
     console.log('Teste USe Effect');
 
-    setTimeout(() => {
+    const URL = 'http://localhost:8080/categorias';
+
+    fetch(URL).then(async (respostaDoServidor) => {
+      const resposta = await respostaDoServidor.json();
+      setCategorias([
+        ...resposta,
+      ]);
+    });
+
+    /* setTimeout(() => {
       setCategorias([
         ...categorias,
         {
@@ -51,14 +60,12 @@ const CadastroCategoria = () => {
           cor: 'cbd3ff',
         },
       ]);
-    }, 4 * 1000);
-  }, [
-    values.nome,
-  ]);
+    }, 4 * 1000); */
+  }, []);
 
   return (
     <PageDefault>
-      <h1 style={{textAlign:"center"}}>
+      <h1 style={{ textAlign: 'center' }}>
         Cadastro de Categoria :
         {values.nome}
       </h1>
@@ -112,7 +119,7 @@ const CadastroCategoria = () => {
         ))}
       </ul>
 
-     <Button as={Link} className="ButtonLink" to="/">
+      <Button as={Link} className="ButtonLink" to="/">
         Home
       </Button>
 
