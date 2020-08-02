@@ -35,7 +35,9 @@ const CadastroCategoria = () => {
   useEffect(() => {
     console.log('Teste USe Effect');
 
-    const URL = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://dimiflix.herokuapp.com/categorias';
 
     fetch(URL).then(async (respostaDoServidor) => {
       const resposta = await respostaDoServidor.json();
