@@ -12,7 +12,7 @@ const Button = styled.button`
   font-size: 16px;
   outline: none;
   border-radius: 5px;
-  text-decoration: none;
+ text-decoration: none;
   display: inline-block;
   transition: opacity .3s;
   &:hover,

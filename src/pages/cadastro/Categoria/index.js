@@ -4,10 +4,45 @@
 /* eslint-disable linebreak-style */
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+/* import { Link } from 'react-router-dom'; */
+import styled from 'styled-components';
 import PageDefault from '../../../components/PageDefault';
 import Button from '../../../components/Button';
 import FormField from '../../../components/FormField';
+
+const Table = styled.table`
+ border: 3px solid var(--white);
+ border-radius:5px;
+ margin:13px;
+ background: #5243C7;
+ padding:10px; 
+ width:50%;
+ height:50%;
+ margin-left:auto;
+ margin-right:auto;
+
+ @media (max-width:800px){        
+        width:100%;
+        height:100%;
+    }
+ 
+`;
+const Td = styled.td`
+ border: 3px solid var(--black);
+ background: #5243C7;
+ color: var(--black);
+ padding:10px;
+`;
+const Paragraph = styled.p`
+ text-align:center;
+`;
+const ButtonCenter = styled(Button)`
+   display:flex;
+   margin-left:auto;
+   margin-right:auto;
+   width:50%;
+   
+`;
 
 const CadastroCategoria = () => {
   const valoresIniciais = {
@@ -102,9 +137,9 @@ const CadastroCategoria = () => {
           value={values.cor}
           onChange={funcHandler}
         />
-        <Button>
-          Cadastrar
-        </Button>
+        <ButtonCenter>
+          <Paragraph>Cadastrar</Paragraph>
+        </ButtonCenter>
 
       </form>
       {categorias.length === 0 && (
@@ -113,17 +148,20 @@ const CadastroCategoria = () => {
         </div>
       )}
 
-      <ul>
-        {categorias.map((categoria, indice) => (
-          <li key={`${categoria.nome}${indice}`}>
-            {categoria.nome}
-          </li>
-        ))}
-      </ul>
+      <Table>
 
-      <Button as={Link} className="ButtonLink" to="/">
-        Home
-      </Button>
+        {categorias.map((categoria, indice) => (
+
+          <React.Fragment key={`${categoria.nome}${indice}`}>
+            <tr>
+              <Td>{categoria.nome}</Td>
+              <Td>{categoria.descricao}</Td>
+            </tr>
+          </React.Fragment>
+
+        ))}
+
+      </Table>
 
     </PageDefault>
   );
