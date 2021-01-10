@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import PageDefault from '../../../components/PageDefault';
 import Button from '../../../components/Button';
 import FormField from '../../../components/FormField';
+import useForm from '../../../hooks/useForm';
+import URL_BACKEND from '../../../config';
 
 const Table = styled.table`
  border: 3px solid var(--white);
@@ -32,6 +34,11 @@ const Td = styled.td`
  background: #5243C7;
  color: var(--black);
  padding:10px;
+ transition: opacity .3s;
+  &:hover,
+  &:focus {
+    opacity: .3;
+  }
 `;
 const Paragraph = styled.p`
  text-align:center;
@@ -50,54 +57,13 @@ const CadastroCategoria = () => {
     descricao: '',
     cor: '',
   };
+
+  const { funcHandler, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
-
-  const setValue = (chave, valor) => {
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  };
-
-  function funcHandler(infoEvent) {
-    setValue(
-      infoEvent.target.getAttribute('name'),
-      infoEvent.target.value,
-    );
-  }
 
   useEffect(() => {
-    console.log('Teste USe Effect');
 
-    const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:8080/categorias'
-      : 'https://dimiflix.herokuapp.com/categorias';
-
-    fetch(URL).then(async (respostaDoServidor) => {
-      const resposta = await respostaDoServidor.json();
-      setCategorias([
-        ...resposta,
-      ]);
-    });
-
-    /* setTimeout(() => {
-      setCategorias([
-        ...categorias,
-        {
-          id: 1,
-          nome: 'Front End',
-          descricao: 'Uma Categoria',
-          cor: 'cbd1ff',
-        },
-        {
-          id: 2,
-          nome: 'Back End',
-          descricao: 'Uma Categoria',
-          cor: 'cbd3ff',
-        },
-      ]);
-    }, 4 * 1000); */
   }, []);
 
   return (
@@ -113,7 +79,7 @@ const CadastroCategoria = () => {
           ...categorias,
           values,
         ]);
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
         <FormField
@@ -152,9 +118,9 @@ const CadastroCategoria = () => {
 
         {categorias.map((categoria, indice) => (
 
-          <React.Fragment key={`${categoria.nome}${indice}`}>
+          <React.Fragment key={`${categoria.titulo}${indice}`}>
             <tr>
-              <Td>{categoria.nome}</Td>
+              <Td>{categoria.titulo}</Td>
               <Td>{categoria.descricao}</Td>
             </tr>
           </React.Fragment>
