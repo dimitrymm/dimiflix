@@ -1,28 +1,15 @@
 /* eslint-disable linebreak-style */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import App from './pages/Home/App';
-import CadastroVideo from './pages/cadastro/Video';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import CadastroCategoria from './pages/cadastro/Categoria';
-
-const Pagina404 = () => (<div>Pagina 404!</div>);
+import Routes from "./routes";
 
 ReactDOM.render(
-  // <React.StrictMode>
-  // <App />
-  // </React.StrictMode>,
+    <BrowserRouter>
+        <Routes />
+    </BrowserRouter>,
 
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" component={App} exact />
-      <Route path="/cadastro/video" component={CadastroVideo} exact />
-      <Route path="/cadastro/categoria" component={CadastroCategoria} exact />
-      <Route component={Pagina404} exact />
-    </Switch>
-  </BrowserRouter>,
-
-  document.getElementById('root'),
+    document.getElementById("root")
 );
